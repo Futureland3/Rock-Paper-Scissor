@@ -120,45 +120,48 @@ function playRound(){
             computerScore++;
             roundPlayed++;
         }
-        if (humanChoise == "rock" && computerChoise == "rock"){
+        else if (humanChoise == "rock" && computerChoise == "rock"){
             console.log("You have both chosen Rock. It's a tie");
             roundPlayed++;
         }
-        if (humanChoise == "rock" && computerChoise == "scissors"){
+        else if (humanChoise == "rock" && computerChoise == "scissors"){
             console.log("You have won this round. Computer chose Scissors and Rock beats Scissors");
             humanScore++;
             roundPlayed++;
         }
     
-        if (humanChoise == "paper" && computerChoise == "scissors"){
+        else if (humanChoise == "paper" && computerChoise == "scissors"){
             console.log("You have lost this round. Computer chose Scissors and Scissors beats Paper");
             computerScore++;
             roundPlayed++;
         }
-        if (humanChoise == "paper" && computerChoise == "paper"){
+        else if (humanChoise == "paper" && computerChoise == "paper"){
             console.log("You have both chosen Paper. It's a tie");
             roundPlayed++;
         }
-        if (humanChoise == "paper" && computerChoise == "rock"){
+        else if (humanChoise == "paper" && computerChoise == "rock"){
             console.log("You have won this round. Computer chose Rock and Paper beats Paper");
             humanScore++;
             roundPlayed++;
         }
     
-        if (humanChoise == "scissors" && computerChoise == "rock"){
+        else if (humanChoise == "scissors" && computerChoise == "rock"){
             console.log("You have lost this round. Computer chose Rock and Rock beats Scissors");
             computerScore++;
             roundPlayed++;
         }
-        if (humanChoise == "scissors" && computerChoise == "scissors"){
+        else if (humanChoise == "scissors" && computerChoise == "scissors"){
             console.log("You have both chosen Scissors. It's a tie");
             roundPlayed++;
         }
-        if (humanChoise == "scissors" && computerChoise == "paper"){
+        else if (humanChoise == "scissors" && computerChoise == "paper"){
             console.log("You have won this round. Computer chose Scissors and Scissors beats Paper");
             humanScore++;
             roundPlayed++;
-        }    
+        }
+        else {
+            consolelog("Something unexpected happened. Refresh the page!");
+        }
     }
     declareWinner();
 }
