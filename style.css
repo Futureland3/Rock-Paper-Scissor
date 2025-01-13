@@ -1,0 +1,61 @@
+@import url('https://fonts.cdnfonts.com/css/bubbly-2');
+
+body{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400%, 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.intro{
+    font-size: 5vh;
+    background: linear-gradient(-45deg, #23d5ab, #e73c7e, #ee7752);
+    background-size: 400% 400%;
+    padding: 1em;
+    border-radius: 25px;
+    animation: gradient 15s ease infinite;
+    color: white;
+    font-family: 'Bubbly', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    background-clip: padding-box;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.choices {
+    display: flex;
+    gap: 10vw;
+    margin-top: 15vh;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background: transparent;
+    border: none;
+}
+
+img:hover {
+    height: 45vh;
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+}
+
+img {
+    height: 35vh;
+}

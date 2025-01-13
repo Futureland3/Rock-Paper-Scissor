@@ -75,13 +75,13 @@
 
 
 
-function getHumanChoice(){
-    do {
-        humanChoise = prompt("Rock, Paper or Scissors?");
-        humanChoise = humanChoise.toLocaleLowerCase();
-    } while(humanChoise != "rock" && humanChoise != "paper" && humanChoise != "scissors");
-    return humanChoise;
-}
+//function getHumanChoice(){
+//     do {
+//         humanChoise = prompt("Rock, Paper or Scissors?");
+//         humanChoise = humanChoise.toLocaleLowerCase();
+//     } while(humanChoise != "rock" && humanChoise != "paper" && humanChoise != "scissors");
+//     return humanChoise;
+// }
 
 function getComputerChoice(){
     computerChoise = Math.floor(Math.random() * 3);
@@ -106,7 +106,7 @@ function declareWinner(finalScores){
 }
 
 function playRound(scores){
-        getHumanChoice();
+        //getHumanChoice();
         console.log("You chose " + humanChoise);
     
         getComputerChoice(3);
@@ -157,13 +157,12 @@ function playRound(scores){
 function playGame(roundPlayed = 0){
     let scores = [0,0]
     console.log("You are going to play 5 rounds of Rock Paper Scissors.");
-    while(roundPlayed < 5){
+    while(score[0] < 5 || score[1] < 5){
         console.log("Round " + (roundPlayed+1));
         playRound(scores);
         roundPlayed++;
         console.log("Your score is now: " + scores[0] + " . And the computer's score is now: " + scores[1]);
     }
-    console.log("Time's up! The final result is:");
     declareWinner(scores);
 
 }
