@@ -1,98 +1,45 @@
-// Notes: getComputerChoise(), getHumanChoice() using the prompt method
-// function playRound(humanChoice, computerChoice) {
-//     // your code here!
-//   }
-  
-//   const humanSelection = getHumanChoice();
-//   const computerSelection = getComputerChoice();
-  
-//   playRound(humanSelection, computerSelection);
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
 
-//Make playGame(). playRound() will be inside this function. 
+const currentState = document.querySelector(".currentState");
 
 
-//START playGame method
-//humanResult is 0. computerResult is 0. roundPlayed is 0
-//START OF playRound:
-//STORE value of the variable of prompt inside humanChoice
-//MAKE humanChoice case-insensitive
-//IF answer is NOT acceptable
-//  console.log text "Not acceptable answer. Try again!"
-//  BACK to step 2
-//STORE value of the random value inside computerChoice
+let humanChoice = "";
+let computerChoice;
+let roundPlayed = 0
+let scores = [0,0] // score[0] is the player. score[1] is the computer
 
-//GENERATE random numbers up to 3.
-//IF number is 1 
-//  computerChoice is Rock
-//IF number is 2
-//  computerChoice is Paper
-//IF number is 3
-//  computerChoice is Scissors
+btnRock.addEventListener("click", ()=>{
+    humanChoice = btnRock.id;
+    playRound(scores);
+});
+btnPaper.addEventListener("click", ()=>{
+    humanChoice = btnPaper.id;
+    playRound(scores);
 
-//Rules: Rock beats scissors. Paper beats rock. Scissors beats Paper. Else tie
+});
+btnScissors.addEventListener("click", ()=>{
+    humanChoice = btnScissors.id;
+    playRound(scores);
 
-//IF humanChoise is Rock AND computerChoise is Paper
-//  console.log "You have lost this round. Computer chose Paper and Paper beats Rock"
-//  computerResult is incremented by 1. roundPlayed is incremented by 1
-//IF humanChoise is Rock AND computerChoise is Rock
-//  console.log "You have both chosen Rock. It's a tie". roundPlayed is incremented by 1
-//IF humanChoise is Rock AND computerChoise is Scossors
-//  console.log "You have won this round. Computer chose Scissors and Rock beats Rock". roundPlayed is incremented by 1
-
-//IF humanChoise is Paper AND computerChoise is Scissors
-//  console.log "You have lost this round. Computer chose Scissors and Scissors beats Paper"
-//  computerResult is incremented by 1. roundPlayed is incremented by 1
-//IF humanChoise is Paper AND computerChoise is Paper
-//  console.log "You have both chosen Paper. It's a tie". roundPlayed is incremented by 1
-//IF humanChoise is Paper AND computerChoise is Rock
-//  console.log "You have won this round. Computer chose Rock and Paper beats Rock". roundPlayed is incremented by 1
-
-//IF humanChoise is Scissors AND computerChoise is Rock
-//  console.log "You have lost this round. Computer chose Rock and Rock beats Scissors"
-//  computerResult is incremented by 1. roundPlayed is incremented by 1
-//IF humanChoise is Scissors AND computerChoise is Scissors
-//  console.log "You have both chosen Scissors. It's a tie". roundPlayed is incremented by 1
-//IF humanChoise is Scissors AND computerChoise is Paper
-//  console.log "You have won this round. Computer chose Paper and Scissors beats Paper". roundPlayed is incremented by 1
-
-//IF roundPlayed is equal to 5
-//  RUN declareWinner()
-
-//declareWinner():
-//IF humanScore > computerScore
-//  console.log "You have won"
-//ELSE IF computerScore > humanScore
-//  console.log "You have lost"
-//ELSE console.log "It's a tie"
-
-//humanResult is 0. computerResult is 0. roundPlayed is 0
-//END OF playRound
-
-//IF user runs playGame
-//  BACK to step 1
-//ELSE 
-//  END
+});
 
 
-
-//function getHumanChoice(){
-//     do {
-//         humanChoise = prompt("Rock, Paper or Scissors?");
-//         humanChoise = humanChoise.toLocaleLowerCase();
-//     } while(humanChoise != "rock" && humanChoise != "paper" && humanChoise != "scissors");
-//     return humanChoise;
-// }
+function test(){
+    alert("holi");
+}
 
 function getComputerChoice(){
-    computerChoise = Math.floor(Math.random() * 3);
-    if(computerChoise == 0){
-        computerChoise = "rock";
-    } else if (computerChoise == 1) {
-        computerChoise = "paper";
+    computerChoice = Math.floor(Math.random() * 3);
+    if(computerChoice == 0){
+        computerChoice = "rock";
+    } else if (computerChoice == 1) {
+        computerChoice = "paper";
     } else {
-        computerChoise = "scissors";
+        computerChoice = "scissors";
     }
-    return computerChoise;
+    return computerChoice;
 }
 
 function declareWinner(finalScores){
@@ -106,68 +53,67 @@ function declareWinner(finalScores){
 }
 
 function playRound(scores){
-        //getHumanChoice();
-        console.log("You chose " + humanChoise);
+        console.log("You chose " + humanChoice);
     
         getComputerChoice(3);
-        console.log("Computer chose " + computerChoise);
+        console.log("Computer chose " + computerChoice);
+
     
-        if (humanChoise == "rock" && computerChoise == "paper"){
-            console.log("You have lost this round. Computer chose Paper and Paper beats Rock");
+        if (humanChoice == "rock" && computerChoice == "paper"){
             scores[1]++;
-        }
-        else if (humanChoise == "rock" && computerChoise == "rock"){
-            console.log("You have both chosen Rock. It's a tie");
+            currentState.textContent = "You have lost this round. Computer chose Paper and Paper beats Rock. Current score is: " + scores;
 
         }
-        else if (humanChoise == "rock" && computerChoise == "scissors"){
-            console.log("You have won this round. Computer chose Scissors and Rock beats Scissors");
-            scores[0]++
+        else if (humanChoice == "rock" && computerChoice == "rock"){
+            currentState.textContent = "You have both chosen Rock. It's a tie. Current score is: " + scores;
+
+        }
+        else if (humanChoice == "rock" && computerChoice == "scissors"){
+            scores[0]++;
+            currentState.textContent = "You have won this round. Computer chose Scissors and Rock beats Scissors. Current score is: " + scores;
+
+
         }
     
-        else if (humanChoise == "paper" && computerChoise == "scissors"){
-            console.log("You have lost this round. Computer chose Scissors and Scissors beats Paper");
+        else if (humanChoice == "paper" && computerChoice == "scissors"){
             scores[1]++;
+            currentState.textContent = "You have lost this round. Computer chose Scissors and Scissors beats Paper. Current score is: " + scores;
         }
-        else if (humanChoise == "paper" && computerChoise == "paper"){
-            console.log("You have both chosen Paper. It's a tie");
+        else if (humanChoice == "paper" && computerChoice == "paper"){
+            currentState.textContent = "You have both chosen Paper. It's a tie. Current score is: " + scores;
         }
-        else if (humanChoise == "paper" && computerChoise == "rock"){
-            console.log("You have won this round. Computer chose Rock and Paper beats Paper");
+        else if (humanChoice == "paper" && computerChoice == "rock"){
             scores[0]++;
+            currentState.textContent = "You have won this round. Computer chose Rock and Paper beats Rock. Current score is: " + scores;
         }
     
-        else if (humanChoise == "scissors" && computerChoise == "rock"){
-            console.log("You have lost this round. Computer chose Rock and Rock beats Scissors");
+        else if (humanChoice == "scissors" && computerChoice == "rock"){
             scores[1]++;
+            currentState.textContent = "You have lost this round. Computer chose Rock and Rock beats Scissors. Current score is: " + scores;
         }
-        else if (humanChoise == "scissors" && computerChoise == "scissors"){
-            console.log("You have both chosen Scissors. It's a tie");
+        else if (humanChoice == "scissors" && computerChoice == "scissors"){
+            currentState.textContent = "You have both chosen Scissors. It's a tie. Current score is: " + scores;
         }
-        else if (humanChoise == "scissors" && computerChoise == "paper"){
-            console.log("You have won this round. Computer chose Scissors and Scissors beats Paper");
+        else if (humanChoice == "scissors" && computerChoice == "paper"){
             scores[0]++;
+            currentState.textContent = "You have won this round. Computer chose Scissors and Scissors beats Paper";
         }
         else {
-            console.log("Something unexpected happened. Refresh the page!");
+            currentState.textContent = "Something unexpected happened. Refresh the page!";
         }
         return scores;
 }
 
-function playGame(roundPlayed = 0){
-    let scores = [0,0]
-    console.log("You are going to play 5 rounds of Rock Paper Scissors.");
-    while(score[0] < 5 || score[1] < 5){
-        console.log("Round " + (roundPlayed+1));
-        playRound(scores);
-        roundPlayed++;
-        console.log("Your score is now: " + scores[0] + " . And the computer's score is now: " + scores[1]);
-    }
-    declareWinner(scores);
+//console.log("You are going to play 5 rounds of Rock Paper Scissors.");
+// if (scores[0] < 5 && scores[1] < 5){
+//     console.log("Round " + (roundPlayed+1));
+//     playRound(scores);
+//     roundPlayed++;
+//     console.log("Your score is now: " + scores[0] + " . And the computer's score is now: " + scores[1]);
+// }
+//declareWinner(scores);
 
-}
 
-playGame();
 
 
 
