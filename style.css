@@ -60,22 +60,13 @@ img {
     height: 35vh;
 }
 
-.currentState {
+.currentState, .currentScores {
     display: flex;
     justify-content: center;
-    padding: 2em;
+    margin: 2em;
     color: white;
     font-size: 2em;
     font-family: 'Bubbly', sans-serif;
     font-weight: bold;
 }
 
-/* .finalResult{
-    display: flex;
-    justify-content: center;
-    padding: 2em;
-    color: white;
-    font-size: 2em;
-    font-family: 'Bubbly', sans-serif;
-    font-weight: bold;
-} */
